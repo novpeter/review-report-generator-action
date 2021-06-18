@@ -1,0 +1,19 @@
+name: 'Review report generator'
+description: 'Generate review report from swiftlint and xcode test results'
+inputs:
+  swiftlint-result-path:
+    description: 'Path to swiftlint result .txt'
+    required: true
+  xcode-tests-result-path:
+    description: 'Path to xcode tests result .txt'
+    required: true
+  author:
+    description: 'Who triggered workflow'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.swiftlint-result-path }}
+    - ${{ inputs.xcode-tests-result-path }}
+    - ${{ inputs.author }}
