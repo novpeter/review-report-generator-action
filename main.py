@@ -23,6 +23,9 @@ def get_swiftlint_result():
     warnings_count = 0
 
     for line in lines:
+        if 'Done linting' in line:
+            break
+
         if '::warning file=' in line:
             warnings_count += 1
             new_line = line.replace('::warning file=', '')
@@ -42,7 +45,7 @@ def get_swiftlint_result():
         swiftlint_report += warnings_report
 
     if errors_count ==0 and warnings_count == 0:
-        swiftlint_report = '✅ No linter warnings and errors!'
+        swiftlint_report = '✅ Successful! No linter warnings and errors'
 
     swiftlint_results_file.close()
     return swiftlint_report
