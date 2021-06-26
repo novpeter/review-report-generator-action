@@ -44,8 +44,8 @@ def get_swiftlint_result():
     if warnings_count > 0:
         swiftlint_report += warnings_report
 
-    if errors_count ==0 and warnings_count == 0:
-        swiftlint_report = '✅ Successful! No linter warnings and errors'
+    if errors_count == 0 and warnings_count == 0:
+        swiftlint_report = '✅ Successful! No linter warnings and errors\n'
 
     swiftlint_results_file.close()
     return swiftlint_report
